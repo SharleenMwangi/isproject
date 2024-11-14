@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+*, *::before, *::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body, input {
+    font-family: "Poppins", sans-serif;
+}
+
+.flash-messages {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.flash-messages ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.flash-messages li {
+    margin-bottom: 5px;
+}
+
+main {
+    width: 100%;
+    min-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body {
+    background-image: url('/static/images/waterback3.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.box {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: 490px;
+    background-color: #CCCCFF;
+    border-radius: 3.3rem;
+    box-shadow: 0 60px 40px -30px rgba(0, 0, 0, 0.27);
+    overflow: hidden;
+}
+
+.inner-box {
+    position: absolute;
+    width: calc(95% - 4rem);
+    height: calc(95% - 4rem);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: space-between;
+    transition: transform 0.6s ease-in-out;
+}
+
+.forms-wrap {
+    position: relative;
+    height: 100%;
+    width: 45%;
+    top: 0;
+    z-index: 1;
+    background-color: #000080; /* Default color for Sign In */
+    transition: background-color 0.5s ease; /* Smooth transition */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-radius: 15px;
+}
+
+.carousel {
+    position: relative;
+    height: 100%;
+    width: 55%;
+    background-color: #CCCCFF; /* Lighter blue for Sign Up */
+    border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    transition: background-color 0.5s ease;
+}
+
+.background-slider {
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    top: 0;
+    left: 0;
+    background-color: #000080;
+    transition: left 0.5s ease, background-color 0.5s ease;
+    z-index: 0;
+    opacity: 1;
+}
+
+form {
+    max-width: 260px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-top: 1rem;
+}
+
+form.sign-up-form {
+    display: none; /* Hide Sign Up form by default */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 60px;
+    margin: 0.6rem;
+    max-width: 100%;
+    height: auto;
+}
+
+.heading h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: black;
+    margin-bottom: 1rem; /* Adds space between "Get Started" and account link */
+}
+
+/* Style for the account link */
+.account-link {
+    display: flex;  /* Use flexbox to align the text and link on the same line */
+    align-items: center;  /* Vertically center the text and link */
+}
+
+.account-link h6 {
+    color: #696969;
+    font-weight: 400;
+    font-size: 0.75rem;
+    margin-right: 0.5rem; /* Adds space between "Already have an account?" and the "Sign In" link */
+}
+
+.account-link .toggle {
+    color: black;
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.account-link .toggle:hover {
+    color: #4F86F7;
+}
+
+.input-wrap {
+    position: relative;
+    height: 37px;
+    margin-bottom: 2rem;
+}
+
+.input-field {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #bbb;
+    padding: 0;
+    font-size: 0.95rem;
+    color: black;
+    transition: 0.4s;
+    z-index: 1;
+}
+
+label {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.95rem;
+    color: #696969;
+    pointer-events: none;
+    transition: 0.4s;
+    z-index: 0;
+}
+
+/* When the input is focused or has content, the label should move up */
+.input-field:focus,
+.input-field:not(:placeholder-shown) {
+    border-bottom-color: black; /* Change the bottom border color on focus */
+}
+
+.input-field:focus + label,
+.input-field:not(:placeholder-shown) + label {
+    font-size: 0.75rem;  /* Smaller font size when label moves up */
+    top: -10px;  /* Move the label up */
+    color: black; /* Change label color when focused or input has content */
+}
+
+.input-field.active + label {
+    font-size: 0.75rem;
+    top: -10px;
+    color: black;
+}
+
+.sign-btn {
+    display: inline-block;
+    width: 100%;
+    height: 43px;
+    background-color: black;
+    color: antiquewhite;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.8rem;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+    transition: 0.3s;
+}
+
+.sign-btn:hover {
+    background-color: #0077BE;
+}
+
+.text {
+    color: #696969;
+    font-size: 0.7rem;
+}
+
+.text a {
+    color: #424242;
+    transition: 0.3s;
+}
+
+.text a:hover {
+    color: #0077BE;
+}
