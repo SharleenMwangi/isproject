@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <title>Sign In & Sign Up Form</title>
+=======
+    <title>Sign in & Sign up form</title>
+>>>>>>> f90c0c935888b5046800315285ef3b36ca873b9e
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
@@ -12,8 +16,13 @@
     <div class="box">
         <div class="inner-box">
             <div class="forms-wrap">
+<<<<<<< HEAD
                 <!-- Sign-In Form -->
                 <form action="{{ url_for('login') }}" method="POST" class="sign-in-form">
+=======
+                <form action="{{ url_for('index') }}" method="POST" class="sign-in-form">
+                    <input type="hidden" name="form_type" value="login">
+>>>>>>> f90c0c935888b5046800315285ef3b36ca873b9e
                     <div class="logo">
                         <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
                     </div>
@@ -41,17 +50,27 @@
             </div>
 
             <div class="carousel">  
+<<<<<<< HEAD
                 <!-- Sign-Up Form -->
                 <form action="{{ url_for('register') }}" method="POST" class="sign-up-form">
+=======
+                <form action="{{ url_for('index') }}" method="POST" class="sign-up-form">
+                    <input type="hidden" name="form_type" value="register">
+>>>>>>> f90c0c935888b5046800315285ef3b36ca873b9e
                     <div class="logo">
                         <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
                     </div>
                     <div class="heading">
                         <h2>Get Started</h2>
+<<<<<<< HEAD
                         <div class="account-link">
                         <h6>Already have an account?</h6>
                         <a href="#" class="toggle" id="signInToggle">Sign In</a>
                         </div>
+=======
+                        <h6>Already have an account?</h6>
+                        <a href="#" class="toggle" id="signInToggle">Sign In</a>
+>>>>>>> f90c0c935888b5046800315285ef3b36ca873b9e
                     </div>
                     <div class="actual-form">
                         <div class="input-wrap">
@@ -77,13 +96,17 @@
         </div>
     </div>
 </main>
+<<<<<<< HEAD
 
+=======
+>>>>>>> f90c0c935888b5046800315285ef3b36ca873b9e
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const signInForm = document.querySelector('.sign-in-form');
     const signUpForm = document.querySelector('.sign-up-form');
     const signUpToggle = document.getElementById('signUpToggle');
     const signInToggle = document.getElementById('signInToggle');
+<<<<<<< HEAD
 
     // Initially hide the sign-up form
     signUpForm.style.display = 'none';
@@ -100,8 +123,43 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault();  // Prevent default link action
         signUpForm.style.display = 'none';
         signInForm.style.display = 'block';
+=======
+    const formsWrap = document.querySelector('.forms-wrap');
+    const carousel = document.querySelector('.carousel');
+
+    // Toggle between forms
+    signUpToggle.addEventListener('click', function() {
+        signInForm.style.display = 'none';
+        signUpForm.style.display = 'block';
+        formsWrap.style.backgroundColor = '#4F86F7';
+        carousel.style.backgroundColor = '#CCCCFF';
+    });
+
+    signInToggle.addEventListener('click', function() {
+        signUpForm.style.display = 'none';
+        signInForm.style.display = 'block';
+        formsWrap.style.backgroundColor = '#CCCCFF';
+        carousel.style.backgroundColor = '#000080';
+    });
+
+    // Input field focus and placeholder hover effect
+    const inputFields = document.querySelectorAll('.input-field');
+    inputFields.forEach(input => {
+        input.addEventListener('focus', function() {
+            this.classList.add('active');
+        });
+        input.addEventListener('blur', function() {
+            if (!this.value) {
+                this.classList.remove('active');
+            }
+        });
+>>>>>>> f90c0c935888b5046800315285ef3b36ca873b9e
     });
 });
 </script>
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> f90c0c935888b5046800315285ef3b36ca873b9e

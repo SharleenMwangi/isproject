@@ -11,6 +11,7 @@ app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Set your secret key for session management
 app.permanent_session_lifetime = timedelta(minutes=30)  # Optional session timeout
 
+<<<<<<< HEAD
 # Configure MySQL connection settings (root connection for initial setup)
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
@@ -85,6 +86,19 @@ mysql = MySQL(app)
 
 # Route for authentication page (index)
 @app.route('/', methods=['GET', 'POST'])
+=======
+# Configure MySQL settings
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'sharls'
+app.config['MYSQL_PASSWORD'] = 'sharls'
+app.config['MYSQL_DB'] = 'waterbilling'
+
+# Initialize MySQL
+mysql = MySQL(app)
+
+# Route for authentication page (index)
+@app.route('/')
+>>>>>>> f90c0c935888b5046800315285ef3b36ca873b9e
 def index():
     return render_template('index.html')
 
@@ -99,6 +113,7 @@ def login():
         cursor.execute("SELECT * FROM users WHERE email = %s", (email,))
         user = cursor.fetchone()
         
+<<<<<<< HEAD
         if user and check_password_hash(user[3], password):  # Password is in the 4th position
             session['user_id'] = user[0]  # Store user ID in session
             flash('Login successful!')
@@ -106,6 +121,15 @@ def login():
         else:
             flash('Invalid credentials. Please try again.')
     return render_template('index.html')
+=======
+        if user and check_password_hash(user[2], password):
+            session['user_id'] = user[0]  # Store user ID in session
+            flash('Login successful!')  # Show success message
+            return redirect(url_for('home'))  # Redirect to home after successful login
+        else:
+            flash('Invalid credentials. Please try again.')  # Show error message
+    return render_template('index.html')  # Render index page again for login
+>>>>>>> f90c0c935888b5046800315285ef3b36ca873b9e
 
 # Route for register page
 @app.route('/register', methods=['GET', 'POST'])
@@ -122,6 +146,7 @@ def register():
         
         if existing_user:
             flash('Email is already registered. Please use a different email.')
+<<<<<<< HEAD
             return redirect(url_for('index'))
         
         cursor.execute("INSERT INTO users (name, email, password) VALUES (%s, %s, %s)", 
@@ -131,10 +156,21 @@ def register():
         return redirect(url_for('index'))
     
     return render_template('index.html')
+=======
+            return redirect(url_for('index'))  # Redirect to index to show the form again
+        
+        cursor.execute("INSERT INTO users (name, email, password) VALUES (%s, %s, %s)", (name, email, hashed_password))
+        mysql.connection.commit()  # Commit changes to the database
+        flash('Registration successful! You can now log in.')  # Show success message
+        return redirect(url_for('index'))  # Redirect to index after successful registration
+    
+    return render_template('index.html')  # Render index page for registration
+>>>>>>> f90c0c935888b5046800315285ef3b36ca873b9e
 
 # Route for the dashboard page
 @app.route('/home')
 def home():
+<<<<<<< HEAD
     if 'user_id' not in session:
         return redirect(url_for('login'))
     return render_template('home.html')
@@ -142,3 +178,12 @@ def home():
 # Run the app
 if __name__ == '__main__':
     app.run(debug=True)
+=======
+    if 'user_id' not in session:  # Check if user is logged in
+        return redirect(url_for('login'))  # Redirect to login if not logged in
+    return render_template('home.html')  # Render home page if logged in
+
+# Run the app
+if __name__ == '__main__':
+    app.run(debug=True)
+>>>>>>> f90c0c935888b5046800315285ef3b36ca873b9e

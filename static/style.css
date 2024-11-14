@@ -9,7 +9,10 @@
 body, input {
     font-family: "Poppins", sans-serif;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> f90c0c935888b5046800315285ef3b36ca873b9e
 .flash-messages {
     background-color: #f8d7da;
     color: #721c24;
@@ -29,6 +32,10 @@ body, input {
     margin-bottom: 5px;
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> f90c0c935888b5046800315285ef3b36ca873b9e
 main {
     width: 100%;
     min-height: 100vh;
@@ -47,12 +54,20 @@ body {
     background-repeat: no-repeat;
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> f90c0c935888b5046800315285ef3b36ca873b9e
 .box {
     position: relative;
     width: 100%;
     max-width: 800px;
     height: 490px;
+<<<<<<< HEAD
     background-color: #CCCCFF;
+=======
+    background-color: #CCCCFF;; 
+>>>>>>> f90c0c935888b5046800315285ef3b36ca873b9e
     border-radius: 3.3rem;
     box-shadow: 0 60px 40px -30px rgba(0, 0, 0, 0.27);
     overflow: hidden;
@@ -70,6 +85,10 @@ body {
     transition: transform 0.6s ease-in-out;
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> f90c0c935888b5046800315285ef3b36ca873b9e
 .forms-wrap {
     position: relative;
     height: 100%;
@@ -83,7 +102,11 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 1rem 0;
+<<<<<<< HEAD
     border-radius: 15px;
+=======
+    border-radius: 15px; 
+>>>>>>> f90c0c935888b5046800315285ef3b36ca873b9e
 }
 
 .carousel {
@@ -140,6 +163,7 @@ form.sign-up-form {
     font-size: 2rem;
     font-weight: 600;
     color: black;
+<<<<<<< HEAD
     margin-bottom: 1rem; /* Adds space between "Get Started" and account link */
 }
 
@@ -157,14 +181,33 @@ form.sign-up-form {
 }
 
 .account-link .toggle {
+=======
+}
+
+.heading h6 {
+    color: #696969;
+    font-weight: 400;
+    font-size: 0.75rem;
+    display: inline;
+}
+
+.toggle {
+>>>>>>> f90c0c935888b5046800315285ef3b36ca873b9e
     color: black;
     text-decoration: none;
     font-size: 0.75rem;
     font-weight: 500;
     transition: 0.3s;
+<<<<<<< HEAD
 }
 
 .account-link .toggle:hover {
+=======
+    margin-top: 1rem;
+}
+
+.toggle:hover {
+>>>>>>> f90c0c935888b5046800315285ef3b36ca873b9e
     color: #4F86F7;
 }
 
@@ -186,7 +229,10 @@ form.sign-up-form {
     font-size: 0.95rem;
     color: black;
     transition: 0.4s;
+<<<<<<< HEAD
     z-index: 1;
+=======
+>>>>>>> f90c0c935888b5046800315285ef3b36ca873b9e
 }
 
 label {
@@ -198,6 +244,7 @@ label {
     color: #696969;
     pointer-events: none;
     transition: 0.4s;
+<<<<<<< HEAD
     z-index: 0;
 }
 
@@ -212,12 +259,22 @@ label {
     font-size: 0.75rem;  /* Smaller font size when label moves up */
     top: -10px;  /* Move the label up */
     color: black; /* Change label color when focused or input has content */
+=======
+}
+
+.input-field.active {
+    border-bottom-color: black;
+>>>>>>> f90c0c935888b5046800315285ef3b36ca873b9e
 }
 
 .input-field.active + label {
     font-size: 0.75rem;
+<<<<<<< HEAD
     top: -10px;
     color: black;
+=======
+    top: -2px;
+>>>>>>> f90c0c935888b5046800315285ef3b36ca873b9e
 }
 
 .sign-btn {
