@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit User Data</title>
+</head>
+<body>
+    <h2>Edit Monthly Data for {{ user.name }}</h2>
+    <form method="POST" action="{{ url_for('update_usage', user_id=user.id) }}">
+        <label for="year">Year:</label>
+        <input type="number" name="year" value="{{ year }}" required>
+        <label for="month">Month:</label>
+        <input type="number" name="month" value="{{ month }}" required>
+        <label for="usage_units">Usage (Units):</label>
+        <input type="number" step="0.01" name="usage_units" value="{{ usage_units }}" required>
+        <label for="billing_amount">Billing Amount:</label>
+        <input type="number" step="0.01" name="billing_amount" value="{{ billing_amount }}" required>
+        <label for="payment_status">Payment Status:</label>
+        <select name="payment_status" required>
+            <option value="Paid" {% if payment_status == 'Paid' %}selected{% endif %}>Paid</option>
+            <option value="Pending" {% if payment_status == 'Pending' %}selected{% endif %}>Pending</option>
+        </select>
+        <button type="submit">Update Data</button>
+    </form>
+</body>
+</html>
