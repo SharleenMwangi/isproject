@@ -1,0 +1,227 @@
+/* General Styles */
+body {
+    font-family: 'Lucida Sans', Geneva, Verdana, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    background-image: url('/static/images/waterback3.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Header Styles */
+header {
+    background-color: #c8e0f8;
+    color: #0f0f0f;
+    padding: 2px;
+}
+
+.title {
+    text-align: center;
+}
+
+.main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo img {
+    max-width: 150px;
+}
+
+/* Menu Styles */
+ul.menu {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+ul.menu li {
+    margin: 10px;
+}
+
+ul.menu a {
+    text-decoration: none;
+    color: #090f63;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-size: 0.9em;
+}
+
+ul.menu a.active {
+    background-color: #2f4f89;
+    color: #ffffff;
+    font-weight: bold;
+    border-bottom: 2px solid #4b82d4;
+}
+
+ul.menu a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Logout Link */
+#logout-link {
+    color: #070606;
+    font-weight: bold;
+    font-size: 12px;
+    padding: 5px;
+}
+
+#logout-link:hover {
+    text-decoration: underline;
+    font-size: 14px;
+}
+
+/* Content Box Styles */
+.content-box {
+    background-color: rgba(236, 241, 241, 0.9);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 900px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    display: none;
+}
+
+/* Responsive Table */
+.content-box table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    overflow-x: auto;
+}
+
+.content-box th,
+.content-box td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.content-box th {
+    background-color: #b9d5f1;
+    color: white;
+}
+
+.content-box tr:nth-child(even) {
+    background-color: rgba(158, 203, 209, 0.5);
+}
+
+/* Form Styles */
+form {
+    background-color: rgba(236, 241, 241, 0.9);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: left;
+}
+
+form h2 {
+    color: #090f63;
+    font-size: 1.8em;
+    text-align: center;
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+form button {
+    background-color: #4b82d4;
+    color: #ffffff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.1em;
+}
+
+form button:hover {
+    background-color: #165674;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .main {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo img {
+        max-width: 100px;
+    }
+
+    ul.menu {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    ul.menu li {
+        margin: 5px 0;
+    }
+
+    .content-box {
+        max-width: 95%;
+        padding: 15px;
+    }
+
+    form {
+        max-width: 90%;
+    }
+
+    form button {
+        font-size: 1em;
+    }
+
+    .menu a {
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 480px) {
+    .main {
+        flex-direction: column;
+    }
+
+    .menu a {
+        padding: 8px 12px;
+        font-size: 0.7em;
+    }
+
+    .content-box {
+        padding: 10px;
+    }
+
+    form {
+        padding: 10px;
+    }
+
+    form button {
+        padding: 8px 12px;
+    }
+}
