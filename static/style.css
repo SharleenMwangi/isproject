@@ -9,33 +9,8 @@
 body, input {
     font-family: "Poppins", sans-serif;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> f90c0c935888b5046800315285ef3b36ca873b9e
-.flash-messages {
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-}
 
-.flash-messages ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.flash-messages li {
-    margin-bottom: 5px;
-}
-
-<<<<<<< HEAD
-=======
-
->>>>>>> f90c0c935888b5046800315285ef3b36ca873b9e
 main {
     width: 100%;
     min-height: 100vh;
@@ -46,6 +21,26 @@ main {
     align-items: center;
     justify-content: center;
 }
+/* Admin Login Button Styling */
+.admin-login-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.admin-login-link {
+    background-color: #4b82d4;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+}
+
+.admin-login-link:hover {
+    background-color: #165674;
+}
 
 body {
     background-image: url('/static/images/waterback3.jpeg');
@@ -54,20 +49,12 @@ body {
     background-repeat: no-repeat;
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> f90c0c935888b5046800315285ef3b36ca873b9e
 .box {
     position: relative;
     width: 100%;
     max-width: 800px;
     height: 490px;
-<<<<<<< HEAD
     background-color: #CCCCFF;
-=======
-    background-color: #CCCCFF;; 
->>>>>>> f90c0c935888b5046800315285ef3b36ca873b9e
     border-radius: 3.3rem;
     box-shadow: 0 60px 40px -30px rgba(0, 0, 0, 0.27);
     overflow: hidden;
@@ -85,10 +72,6 @@ body {
     transition: transform 0.6s ease-in-out;
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> f90c0c935888b5046800315285ef3b36ca873b9e
 .forms-wrap {
     position: relative;
     height: 100%;
@@ -102,11 +85,7 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 1rem 0;
-<<<<<<< HEAD
-    border-radius: 15px;
-=======
     border-radius: 15px; 
->>>>>>> f90c0c935888b5046800315285ef3b36ca873b9e
 }
 
 .carousel {
@@ -163,25 +142,6 @@ form.sign-up-form {
     font-size: 2rem;
     font-weight: 600;
     color: black;
-<<<<<<< HEAD
-    margin-bottom: 1rem; /* Adds space between "Get Started" and account link */
-}
-
-/* Style for the account link */
-.account-link {
-    display: flex;  /* Use flexbox to align the text and link on the same line */
-    align-items: center;  /* Vertically center the text and link */
-}
-
-.account-link h6 {
-    color: #696969;
-    font-weight: 400;
-    font-size: 0.75rem;
-    margin-right: 0.5rem; /* Adds space between "Already have an account?" and the "Sign In" link */
-}
-
-.account-link .toggle {
-=======
 }
 
 .heading h6 {
@@ -192,22 +152,15 @@ form.sign-up-form {
 }
 
 .toggle {
->>>>>>> f90c0c935888b5046800315285ef3b36ca873b9e
     color: black;
     text-decoration: none;
     font-size: 0.75rem;
     font-weight: 500;
     transition: 0.3s;
-<<<<<<< HEAD
-}
-
-.account-link .toggle:hover {
-=======
     margin-top: 1rem;
 }
 
 .toggle:hover {
->>>>>>> f90c0c935888b5046800315285ef3b36ca873b9e
     color: #4F86F7;
 }
 
@@ -229,10 +182,6 @@ form.sign-up-form {
     font-size: 0.95rem;
     color: black;
     transition: 0.4s;
-<<<<<<< HEAD
-    z-index: 1;
-=======
->>>>>>> f90c0c935888b5046800315285ef3b36ca873b9e
 }
 
 label {
@@ -244,37 +193,15 @@ label {
     color: #696969;
     pointer-events: none;
     transition: 0.4s;
-<<<<<<< HEAD
-    z-index: 0;
-}
-
-/* When the input is focused or has content, the label should move up */
-.input-field:focus,
-.input-field:not(:placeholder-shown) {
-    border-bottom-color: black; /* Change the bottom border color on focus */
-}
-
-.input-field:focus + label,
-.input-field:not(:placeholder-shown) + label {
-    font-size: 0.75rem;  /* Smaller font size when label moves up */
-    top: -10px;  /* Move the label up */
-    color: black; /* Change label color when focused or input has content */
-=======
 }
 
 .input-field.active {
     border-bottom-color: black;
->>>>>>> f90c0c935888b5046800315285ef3b36ca873b9e
 }
 
 .input-field.active + label {
     font-size: 0.75rem;
-<<<<<<< HEAD
-    top: -10px;
-    color: black;
-=======
     top: -2px;
->>>>>>> f90c0c935888b5046800315285ef3b36ca873b9e
 }
 
 .sign-btn {
@@ -307,4 +234,38 @@ label {
 
 .text a:hover {
     color: #0077BE;
+}
+
+/* Style for Meter Number Input */
+.input-wrap input[name="meter_number"] {
+    /* Inherits from .input-field but you can add custom styles if needed */
+    font-size: 0.95rem;
+    color: black;
+    /* Add any custom styles here if necessary */
+}
+
+/* Label styling for all fields */
+.input-wrap label {
+    color: #696969;
+    font-size: 0.95rem;
+    transition: 0.4s;
+}
+
+/* Adjust label when input is focused or active */
+.input-wrap input:focus + label, 
+.input-wrap input.active + label {
+    font-size: 0.75rem;
+    top: -2px;
+    color: #000;
+}
+
+/* Ensure input fields have consistent font size and color */
+.input-field {
+    font-size: 0.95rem;
+    color: black;
+}
+
+/* Optional: If you want to style the meter number field specifically */
+.input-wrap input[name="meter_number"]:focus {
+    border-bottom-color: #0077BE; /* Example for focus effect */
 }

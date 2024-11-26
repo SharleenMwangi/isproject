@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin_dashboard.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Function to calculate the bill based on cubic meters
+        function calculateBill() {
+            const cubicMeters = document.getElementById('cubicMeters').value;
+            const charge = {{ charge_per_cubic_meter }};
+            const bill = cubicMeters * charge;
+            document.getElementById('billAmount').innerText = bill;
+        }
+
+        function showSection(sectionId) {
+    const sections = document.querySelectorAll('.content-box');
+    const menuItems = document.querySelectorAll('.menu a');
+
+    // Hide all sections
+    sections.forEach(section => {
+        section.style.display = 'none';
+    });
+
+    // Remove active class from all menu items
+    menuItems.forEach(menu => {
+        menu.classList.remove('active');
+    });
+
+    // Show the selected section
+    document.getElementById(sectionId).style.display = 'block';
+
+    // Highlight the selected menu item
+    document.querySelector(`.menu a[onclick="showSection('${sectionId}')"]`).classList.add('active');
+}
+
+
+            // Initialize chart
+            const ctx = document.getElementById('reportsChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: {{ dates | safe }}, // Pass dates dynamically from the backend
+                    datasets: [{
+                        label: 'User Registrations',
+                        data: {{ counts | safe }}, // Pass counts dynamically from the backend
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 2,
+                        fill: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="title">
+            <h1>Admin Dashboard</h1>
+        </div>
+        <div class="main">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
+            </div>
+            <ul class="menu">
+                <li><a href="javascript:void(0);" onclick="showSection('userRegistrationGraph')"><i class="fas fa-users icon"></i>User Registration</a></li>
+                <li><a href="javascript:void(0);" onclick="showSection('reportsSection')"><i class="fas fa-chart-line icon"></i>Reports</a></li>
+                <li><a href="javascript:void(0);" onclick="showSection('messagesSection')"><i class="fas fa-comments icon"></i>Messages</a></li>
+                <li><a href="{{ url_for('settings') }}"><i class="fas fa-cog icon"></i>Settings</a></li>
+                <li><a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt icon"></i>Logout</a></li>
+            </ul>
+            
+                     
+        </div>
+    </header>
+
+    <!-- User Registration Graph Section -->
+    <div id="userRegistrationGraph" class="content-box" style="display: block;">
+        <h2>User Registration</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Meter Number</th>
+                    <th>Date Registered</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.meter_number or 'N/A' }}</td>
+                    <td>{{ user.created_at.strftime('%Y-%m-%d') }}</td>
+                    <td>{{ 'Admin' if user.is_admin else 'User' }}</td>
+                    <td>{{ 'Active' if user.status == 'active' else 'Inactive' }}</td>
+                    <td>
+                        <a href="{{ url_for('edit_user', user_id=user.id) }}">Edit</a> |
+                        <a href="{{ url_for('delete_user', user_id=user.id) }}" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
+                    </td>
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+  <!-- Reports Section -->
+<div id="reportsSection" class="content-box" style="display: none;">
+    <h2>Search User Reports</h2>
+    <form method="POST" action="{{ url_for('admin_reports') }}">
+        <input type="text" name="search" placeholder="Search by Name, Email, or Meter Number" required>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if users %}
+    <h3>Search Results</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Meter Number</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.meter_number }}</td>
+                <td>
+                    <a href="{{ url_for('edit_usage', user_id=user.id) }}">Edit Data</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No results found.</p>
+    {% endif %}
+</div>
+
+    <!-- Messages Section -->
+    <div id="messagesSection" class="content-box" style="display: none;">
+        <h2>Messages</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Sender</th>
+                    <th>Message</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for message in messages %}
+                <tr>
+                    <td>{{ message.sender }}</td>
+                    <td>{{ message.content }}</td>
+                    <td>{{ message.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Settings Section -->
+    <div id="settingsSection" class="content-box" style="display: none;">
+        <h2>Settings</h2>
+        <form action="{{ url_for('settings') }}" method="POST">
+            <div>
+                <label for="admin-email">Admin Email</label>
+                <input type="email" id="admin-email" name="email" required>
+            </div>
+            <div>
+                <label for="admin-password">Admin Password</label>
+                <input type="password" id="admin-password" name="password" required>
+            </div>
+            <button type="submit">Save Settings</button>
+        </form>
+    </div>
+</body>
+</html>

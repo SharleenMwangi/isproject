@@ -51,6 +51,17 @@ ul.menu a {
 ul.menu a:hover {
     background-color: rgba(255, 255, 255, 0.2);
 }
+#logout-link {
+    color: #070606; /* Red color for emphasis */
+    font-weight: bold;
+    font-size: 12px; 
+    padding: 5px; 
+}
+
+#logout-link:hover {
+    text-decoration: underline;
+    font-size: 14px; 
+}
 
 
 
@@ -58,7 +69,7 @@ ul.menu a:hover {
 .message-button {
     background-color: #4b82d4;
     border: none;
-    padding: 10px 15px;
+    padding: 5px 5px;
     border-radius: 5px;
     cursor: pointer;
 }
@@ -198,40 +209,68 @@ button:hover {
 .help-docs-content {
     line-height: 1.6;
 }
-/* Settings form styling */
-#settings-form .form-group {
+.view-doc-link {
+    display: inline-block;
+    background-color: #4b82d4;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.view-doc-link:hover {
+    background-color: #165674;
+}
+
+/* Settings Form Styling */
+form {
+    background-color: rgba(236, 241, 241, 0.9); /* Similar to other content */
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: block;
+    text-align: left; /* Align text to the left for better readability */
+}
+
+form h2 {
+    color: #090f63; /* Color of the title */
+    font-size: 1.8em;
+    text-align: center; /* Center the title */
+}
+
+form div {
     margin-bottom: 15px;
 }
 
-#settings-form label {
-    display: block;
+form label {
     font-weight: bold;
     margin-bottom: 5px;
+    display: block;
 }
 
-#settings-form input[type="text"],
-#settings-form input[type="email"],
-#settings-form input[type="password"],
-#settings-form select {
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
+    border: 1px solid #ddd;
     border-radius: 5px;
-    border: 1px solid #030303;
 }
 
-#settings-form input[type="checkbox"] {
-    margin-left: 10px;
-}
-
-#settings-form button {
+form button {
     background-color: #4b82d4;
-    color: rgb(7, 7, 7);
+    color: white;
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    width: 100%;
+    font-size: 1.1em;
 }
 
-#settings-form button:hover {
+form button:hover {
     background-color: #165674;
 }
